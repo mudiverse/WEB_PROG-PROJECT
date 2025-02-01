@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/home.css"   rel="stylesheet" />
+    <title>Home | College Name</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div id ='header'></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Heading Section -->
+        <section id="About">
+            <h1>Heading / Name</h1>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events">
+            <h2>Events</h2>
+            <p>Upcoming events information will be displayed here.</p>
+        </section>
+
+        <!-- Information Section -->
+        <section id="info">
+            <h2>Information</h2>
+            <p>Details about the college can go here, including address and highlights.</p>
+        </section>
+    </main>
+    <div id ='footer'></div>
+    <!-- Footer with Login Option -->
+
+    <div id="header"></div>
+<div id="footer"></div>
+
+<script>
+  // Load Header
+  fetch('shared/header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('header').innerHTML = data;
+    });
+
+  // Load Footer
+  fetch('shared/footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer').innerHTML = data;
+    });
+</script>
+
+</body>
+</html>

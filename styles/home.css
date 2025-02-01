@@ -1,0 +1,47 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  nav {
+    background-color: #ff9900;
+    padding: 1rem;
+  }
+  
+  .nav-list {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    gap: 10px;  /* Ensures consistent spacing between items */
+  }
+  
+  .nav-list a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  
+  
+  main {
+    flex: 1;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
