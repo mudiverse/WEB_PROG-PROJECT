@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="styles/home.css" rel="stylesheet" /> -->
+    <link href="styles/global.css" rel="stylesheet" />
+    <title>Admissions | College Name</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div id="header"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Heading Section -->
+        <section id="About">
+            <h1>Heading / Name</h1>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script>
+        // Load Header
+        fetch('shared/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        // Load Footer
+        fetch('shared/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
+</body>
+</html>

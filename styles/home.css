@@ -40,6 +40,49 @@ main {
   text-align: center;
 }
 
+.container{
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  
+}
+section.about div{
+  background-color: #d1d1d1;
+  width: 600px;
+  height: 600px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+section.events div{
+  background-color: #d1d1d1;
+  width: 400px;
+  height: 600px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
+
+section.info div{
+  display: flex;
+  height: 200px;
+  width: 90%;
+  background-color: burlywood;
+  text-align: center;
+  padding: 10px;
+  margin: 100px;
+  border-radius: 10px;
+}
+
+/* footer part  */
+
 footer {
   background-color: #333;
   color: white;
