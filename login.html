@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Login Portal</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Sticky Header -->
+    <div id="header"></div>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="school-logo">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h2>School Login Portal</h2>
+        <form>
+            <div class="input-group">
+                <input type="text" required>
+                <label>Username</label>
+            </div>
+            <div class="input-group">
+                <input type="password" required>
+                <label>Password</label>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+            <div class="extra-links">
+                <a href="#">Forgot Password?</a> | <a href="#">Create Account</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Sticky Footer -->
+    <div id="footer"></div>
+
+    <script>
+        // Load Header
+        fetch('shared/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+    </script>
+</body>
+</html>
