@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Portal | Orange Valley University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #FF9F1C;
+            --accent: #2EC4B6;
+            --dark: #1A1A1A;
+            --light: #FDFFFC;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #2d2d2d, #1a1a1a);
+            font-family: 'Inter', sans-serif;
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        .faculty-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .hero-header {
+            text-align: center;
+            margin-bottom: 6rem;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-float 3s ease-in-out infinite;
+            margin-bottom: 2rem;
+        }
+
+        .department-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .filter-btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            background: var(--glass);
+            border: 1px solid rgba(255,107,53,0.2);
+            color: var(--light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            padding: 2rem;
+        }
+
+        .faculty-card {
+            background: var(--glass);
+            border-radius: 25px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transform: translateY(50px) rotateX(90deg);
+            opacity: 0;
+            animation: card-enter 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-10px) rotateX(0deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .faculty-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, 
+                rgba(255,107,53,0.15) 0%, 
+                transparent 70%);
+            pointer-events: none;
+        }
+
+        .faculty-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 3px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(255,107,53,0.2);
+        }
+
+        .faculty-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.2);
+            transition: all 0.3s ease;
+        }
+
+        .faculty-card:hover .faculty-image img {
+            filter: grayscale(0);
+            transform: scale(1.05);
+        }
+
+        .faculty-details {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .faculty-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .faculty-position {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .faculty-department {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(255,107,53,0.1);
+            border-radius: 30px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--primary);
+            border: 1px solid rgba(255,107,53,0.3);
+        }
+
+        .faculty-expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .expertise-tag {
+            padding: 0.4rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .expertise-tag:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+        }
+
+        .social-link i {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes card-enter {
+            to {
+                transform: translateY(0) rotateX(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes text-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Background Animation */
+        .animated-bg {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: radial-gradient(circle, 
+                rgba(255,107,53,0.05) 0%, 
+                rgba(255,107,53,0) 70%);
+            animation: bg-pulse 8s infinite;
+        }
+
+        @keyframes bg-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <div class="faculty-container">
+        <header class="hero-header">
+            <h1 class="hero-title">Distinguished Faculty</h1>
+            <div class="department-filter">
+                <button class="filter-btn">All Departments</button>
+                <button class="filter-btn">Computer Science</button>
+                <button class="filter-btn">Engineering</button>
+                <button class="filter-btn">Research</button>
+            </div>
+        </header>
+
+        <div class="faculty-grid">
+            <!-- Faculty Member 1 -->
+            <div class="faculty-card" style="animation-delay: 0.2s">
+                <div class="faculty-image">
+                    <img src="https://source.unsplash.com/random/800x800/?professor1" alt="Dr. Emily Rodriguez">
+                </div>
+                <div class="faculty-details">
+                    <h2 class="faculty-name">Dr. Emily Rodriguez</h2>
+                    <p class="faculty-position">Dean of Computer Science</p>
+                    <span class="faculty-department">School of Technology</span>
+                    <div class="faculty-expertise">
+                        <span class="expertise-tag">AI Research</span>
+                        <span class="expertise-tag">Neural Networks</span>
+                        <span class="expertise-tag">Quantum Computing</span>
+                    </div>
+                    <div class="social-links">
+                        <a class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a class="social-link"><i class="fab fa-researchgate"></i></a>
+                        <a class="social-link"><i class="fas fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Faculty Member 2 -->
+            <div class="faculty-card" style="animation-delay: 0.4s">
+                <div class="faculty-image">
+                    <img src="https://source.unsplash.com/random/800x800/?professor2" alt="Prof. Michael Chen">
+                </div>
+                <div class="faculty-details">
+                    <h2 class="faculty-name">Prof. Michael Chen</h2>
+                    <p class="faculty-position">Head of Robotics</p>
+                    <span class="faculty-department">Engineering Division</span>
+                    <div class="faculty-expertise">
+                        <span class="expertise-tag">Autonomous Systems</span>
+                        <span class="expertise-tag">Biomechanics</span>
+                        <span class="expertise-tag">3D Printing</span>
+                    </div>
+                    <div class="social-links">
+                        <a class="social-link"><i class="fab fa-github"></i></a>
+                        <a class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a class="social-link"><i class="fas fa-book-open"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add 4 more faculty members following the same pattern -->
+        </div>
+    </div>
+
+    <script>
+        // Animate cards on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        });
+
+        document.querySelectorAll('.faculty-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add hover effect to filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('mouseover', () => {
+                btn.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            btn.addEventListener('mouseout', () => {
+                btn.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

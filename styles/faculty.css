@@ -1,0 +1,138 @@
+:root {
+    --primary-titan: #ff6b00;
+    --secondary-titan: #8b0000;
+    --wall-color: #2c2c2c;
+    --survey-corps: #16324d;
+}
+
+body {
+    background: linear-gradient(to right, #2c2c2c, #1a1a1a);
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.faculty-hero {
+    position: relative;
+    text-align: center;
+    padding: 5rem 0;
+    overflow: hidden;
+}
+
+.animate-titan {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 4rem;
+    text-shadow: 0 0 15px var(--primary-titan);
+    animation: titan-glow 2s infinite alternate;
+}
+
+.animate-titan span {
+    color: var(--primary-titan);
+    position: relative;
+}
+
+.animate-titan span::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-titan);
+    bottom: -10px;
+    left: 0;
+    animation: titan-slash 1.5s infinite;
+}
+
+@keyframes titan-glow {
+    from { text-shadow: 0 0 10px var(--primary-titan); }
+    to { text-shadow: 0 0 25px var(--primary-titan), 0 0 15px var(--secondary-titan); }
+}
+
+@keyframes titan-slash {
+    0% { transform: scaleX(0); opacity: 0; }
+    50% { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(0); opacity: 0; }
+}
+
+.faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.faculty-card {
+    perspective: 1000px;
+    height: 400px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border: 2px solid var(--primary-titan);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.faculty-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    padding: 2rem;
+    background: rgba(0,0,0,0.9);
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.card-front img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-titan);
+    margin: 1rem auto;
+    filter: grayscale(30%);
+    transition: 0.3s;
+}
+
+.card-front:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+.vertical-maneuvering {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, transparent 60%, var(--primary-titan) 90%);
+    opacity: 0.1;
+    z-index: -1;
+    animation: odm-trails 2s infinite linear;
+}
+
+@keyframes odm-trails {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+.titan-mark {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+    background: url('data:image/svg+xml;utf8,<svg>...</svg>');
+    opacity: 0.3;
+    animation: titan-pulse 2s infinite;
+}
+
+/* Add more AoT themed animations and elements */
