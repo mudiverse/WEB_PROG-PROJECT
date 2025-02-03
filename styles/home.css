@@ -17,6 +17,15 @@ header, nav {
   padding: 1rem;
 }
 
+.name{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+.logo{
+  width: 100px;
+  height: 100px;
+  padding: 0 5px;
+}
+
 ul.xxyyzz {
   display: flex;
   justify-content:  right;
@@ -46,16 +55,19 @@ main {
   gap: 20px;
   
 }
+
 section.about div{
   background-color: #d1d1d1;
   width: 600px;
   height: 600px;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
+
 
 section.events div{
   background-color: #d1d1d1;
@@ -63,15 +75,16 @@ section.events div{
   height: 600px;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-
 }
 
 
 section.info div{
   display: flex;
+  flex-direction: column;
   height: 200px;
   width: 90%;
   background-color: burlywood;
