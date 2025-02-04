@@ -30,6 +30,16 @@
   left: 0;
   width: 100%;
   z-index: 1000;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  }
+  
+  .name h1{
+    color: azure;
+    text-decoration: solid;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: larger;
   }
 
   ul.xxyyzz {
