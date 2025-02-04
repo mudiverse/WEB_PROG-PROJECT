@@ -79,4 +79,33 @@
     font-weight: bold;
   }
   
-  
+  /* Department and Program Cards */
+.department-card, .program-card, .resource-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.department-card:hover, .program-card:hover, .resource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Orange Theme Enhancements */
+.bg-orange-100 {
+  background-color: #fff7ed;
+}
+
+.text-orange-600 {
+  color: #ea580c;
+}
+
+.bg-orange-600 {
+  background-color: #ea580c;
+}
+
+.hover\:bg-orange-700:hover {
+  background-color: #c2410c;
+}
+
+.border-orange-600 {
+  border-color: #ff9900;
+}
