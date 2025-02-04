@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanities & Arts | Orange Valley University</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .animate-fade-in { animation: fadeIn 1.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="header"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="text-center mb-16">
+            <div class="bg-orange-100 rounded-2xl p-8 shadow-lg animate-fade-in">
+                <h1 class="text-4xl md:text-5xl font-bold text-orange-600 mb-4">Humanities & Arts</h1>
+                <p class="text-lg text-gray-600">Explore the richness of human culture, literature, and artistic expression.</p>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                <i class="fas fa-book-open text-4xl text-orange-600 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-800">Literature Studies</h3>
+                <p class="text-gray-600">Dive deep into classical and modern literary works from around the world.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                <i class="fas fa-theater-masks text-4xl text-orange-600 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-800">Performing Arts</h3>
+                <p class="text-gray-600">Engage in drama, theater, and expressive art forms.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                <i class="fas fa-palette text-4xl text-orange-600 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-800">Visual Arts</h3>
+                <p class="text-gray-600">Develop artistic skills through painting, sculpture, and digital art.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                <i class="fas fa-globe text-4xl text-orange-600 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-800">Cultural Studies</h3>
+                <p class="text-gray-600">Understand different cultures, traditions, and their impact on society.</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+    <script>
+        fetch('shared/header.html').then(response => response.text()).then(data => { document.getElementById('header').innerHTML = data; });
+        fetch('shared/footer.html').then(response => response.text()).then(data => { document.getElementById('footer').innerHTML = data; });
+    </script>
+</body>
+</html>
